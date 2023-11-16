@@ -5,6 +5,11 @@ import { MainStyled } from './GlobalStyled';
 
 const HomePage = lazy(() => import('pages/home/home'));
 const MovieById = lazy(() => import('pages/movie-id/movie-id'));
+const MovieCast = lazy(() => import('components/movie-cast/movie-cast'));
+const MovieReviews = lazy(() =>
+  import('components/movie-reviews/movie-reviews')
+);
+const Movies = lazy(() => import('pages/movies/movies'));
 
 export const App = () => {
   return (
@@ -22,7 +27,7 @@ export const App = () => {
           }
         >
           <Route index element={<HomePage />} />
-          <Route path="movies" element={<div>movies</div>} />
+          <Route path="movies" element={<Movies />} />
           <Route
             path="movies/:movieId"
             element={
@@ -32,8 +37,8 @@ export const App = () => {
               </>
             }
           >
-            <Route path="cast" element={<div>movieId cast</div>} />
-            <Route path="reviews" element={<div>movieId reviews</div>} />
+            <Route path="cast" element={<MovieCast />} />
+            <Route path="reviews" element={<MovieReviews />} />
           </Route>
         </Route>
         <Route

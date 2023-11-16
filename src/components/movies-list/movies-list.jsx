@@ -6,22 +6,26 @@ import {
   LinkStyled,
   TitleBlock,
   Title,
-} from './trendings-list.styled';
+} from './movies-list.styled';
 
-export const TrendingList = ({ list }) => {
+export const MoviesList = ({ list }) => {
   const location = useLocation();
   return (
     <List>
-      {list.map(({ original_title, name, id, poster_path }) => {
+      {list.map(({ title, name, id, poster_path }) => {
         return (
           <Item key={id}>
             <LinkStyled to={`/movies/${id}`} state={{ from: location }}>
               <TrendingImg
-                src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+                src={
+                  poster_path
+                    ? `https://image.tmdb.org/t/p/w500${poster_path}`
+                    : 'https://www.si.edu/sites/default/files/newsdesk/press_releases/clip_art_film.jpeg'
+                }
                 alt=""
               />
               <TitleBlock>
-                <Title>{original_title || name}</Title>
+                <Title>{title || name}</Title>
               </TitleBlock>
             </LinkStyled>
           </Item>

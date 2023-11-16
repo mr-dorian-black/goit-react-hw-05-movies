@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { getTrending } from 'api';
-import { TrendingList } from 'components/trendings-list/trendings-list';
+import { MoviesList } from 'components/movies-list/movies-list';
 import { RotatingLines } from 'react-loader-spinner';
 import { LoadingContainer } from './home.styled';
 
@@ -49,7 +49,7 @@ const HomePage = () => {
           />
         </LoadingContainer>
       )}
-      <TrendingList list={trendings} />
+      <MoviesList list={trendings} />
     </>
   );
 };
