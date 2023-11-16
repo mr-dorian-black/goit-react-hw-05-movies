@@ -41,6 +41,8 @@ const MovieCast = () => {
       }
     }
     fetchMovieByIdCast();
+
+    return () => controllerAbort();
   }, [movieId]);
 
   const unknownImg =

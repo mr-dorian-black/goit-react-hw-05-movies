@@ -11,11 +11,15 @@ const HomePage = () => {
 
   const controllerRef = useRef();
 
+  const controllerAbort = () => {
+    if (controllerRef.current) {
+      controllerRef.current.abort();
+    }
+  };
+
   useEffect(() => {
     async function fetchTrending() {
-      if (controllerRef.current) {
-        controllerRef.current.abort();
-      }
+      controllerAbort();
       controllerRef.current = new AbortController();
 
       try {
@@ -31,6 +35,8 @@ const HomePage = () => {
       }
     }
     fetchTrending();
+
+    return () => controllerAbort();
   }, []);
 
   return error ? (

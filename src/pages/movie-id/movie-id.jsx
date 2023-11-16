@@ -50,6 +50,8 @@ const MovieById = () => {
       }
     }
     fetchMovieById();
+
+    return () => controllerAbort();
   }, [movieId]);
 
   return (

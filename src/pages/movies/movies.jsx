@@ -15,6 +15,7 @@ const Movies = () => {
   const [loading, setLoading] = useState(false);
 
   const controllerRef = useRef();
+
   const controllerAbort = () => {
     if (controllerRef.current) {
       controllerRef.current.abort();
@@ -44,6 +45,8 @@ const Movies = () => {
       }
     }
     fetchSearchMovie();
+
+    return () => controllerAbort();
   }, [query]);
 
   const onSubmit = e => {

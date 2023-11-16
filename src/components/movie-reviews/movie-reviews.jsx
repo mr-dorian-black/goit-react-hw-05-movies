@@ -44,6 +44,8 @@ const MovieReviews = () => {
       }
     }
     fetchMovieByIdReviews();
+
+    return () => controllerAbort();
   }, [movieId]);
 
   return (
